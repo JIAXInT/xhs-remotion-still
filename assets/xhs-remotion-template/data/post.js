@@ -56,6 +56,22 @@ export const postData = {
         { type: "dark", label: "THE SOLUTION", text: "把流程串起来，交给 OpenClaw 执行。" }
       ],
       cta: "想要模板？评论【模板】"
+    },
+    {
+      type: "AUTO",
+      tag: "CLI DEMO",
+      page: "05",
+      title: "OpenClaw 一键装上手",
+      subtitle: "Mac 终端风格代码块",
+      lines: [
+        { type: "comment", text: "# 1. 添加插件市场并安装" },
+        { type: "command", prompt: ">", text: "/plugin marketplace add HKUDS/CLI-Anything" },
+        { type: "command", prompt: ">", text: "/plugin install cli-anything" },
+        { type: "empty" },
+        { type: "comment", text: "# 2. 生成某软件 CLI" },
+        { type: "command", prompt: ">", text: "/cli-anything:cli-anything ./gimp" }
+      ],
+      note: "示例命令仅用于演示"
     }
   ]
 };
