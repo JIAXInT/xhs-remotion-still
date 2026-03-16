@@ -17,11 +17,11 @@ export const PointCard: React.FC<{ icon: string; text: string }> = ({
         gap: 24
       }}
     >
-      <div style={{ fontSize: 32, marginTop: 4, color: "#64748B" }}>{icon}</div>
+      <div style={{ fontSize: 32, marginTop: 4, color: "#475569" }}>{icon}</div>
       <div
         style={{
           fontSize: 32,
-          fontWeight: 600,
+          fontWeight: 500,
           color: "#1F2937",
           lineHeight: 1.6,
           whiteSpace: "pre-wrap"

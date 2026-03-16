@@ -15,16 +15,16 @@ export const SummaryBox: React.FC<{
           bottom: 0,
           width: 12,
           background: "#5C67CF",
-          borderTopLeftRadius: 20,
-          borderBottomLeftRadius: 20,
+          borderTopLeftRadius: 16,
+          borderBottomLeftRadius: 16,
           zIndex: 2
         }}
       />
       <div
         style={{
           background: "#F6F7FE",
-          borderRadius: 20,
-          padding: "28px 28px 28px 56px",
+          borderRadius: 16,
+          padding: "40px 40px 40px 56px",
           border: "1px solid #EBEFF8",
           position: "relative",
           zIndex: 1
@@ -38,7 +38,7 @@ export const SummaryBox: React.FC<{
             flexWrap: "wrap",
             alignItems: "center",
             gap: 12,
-            marginBottom: 18
+            marginBottom: 24
           }}
         >
           <span style={{ color: "#0F172A" }}>{label}</span>
@@ -46,7 +46,7 @@ export const SummaryBox: React.FC<{
             style={{
               background: "#E2E6F9",
               color: "#5C67CF",
-              padding: "6px 14px",
+              padding: "8px 16px",
               borderRadius: 12
             }}
           >
@@ -60,7 +60,7 @@ export const SummaryBox: React.FC<{
               color: "#64748B",
               lineHeight: 1.7,
               whiteSpace: "pre-wrap",
-              fontWeight: 600
+              fontWeight: 500
             }}
           >
             {desc}

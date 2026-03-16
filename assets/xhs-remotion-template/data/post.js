@@ -18,7 +18,7 @@ export const postData = {
       ]
     },
     {
-      type: "LIST",
+      type: "AUTO",
       tag: "PAIN POINTS",
       page: "02",
       title: "内容日更最痛的3件事",
@@ -27,7 +27,11 @@ export const postData = {
         { icon: "🧱", text: "文案反复改，效率低还不稳定" },
         { icon: "🎨", text: "封面排版耗时，风格不统一" }
       ],
-      summary: { title: "结论：", text: "流程没串起来" }
+      summary: {
+        label: "共同瓶颈：",
+        highlight: "流程没串起来",
+        desc: "选题、文案、封面上下文分散，收集比输出更耗时。"
+      }
     },
     {
       type: "LIST",
