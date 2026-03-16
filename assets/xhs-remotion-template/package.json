@@ -1,0 +1,16 @@
+{
+  "name": "xhs-remotion-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "remotion studio src/index.tsx",
+    "render:all": "node scripts/render-all.mjs",
+    "render:1": "npx remotion still src/index.tsx Slide-1 out/slide-1.png"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "remotion": "^4.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
