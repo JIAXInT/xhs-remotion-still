@@ -40,178 +40,202 @@ const darkTheme = {
   surfaceDark: "#0B0F14"
 };
 
-const baseSlides = [
-  {
-    type: "COVER",
-    tag: "SHOWCASE",
-    title: ["组件适配展示", "按内容选组件"],
-    subtitle: "同一套视觉\n不同内容结构\n用不同组件承载",
+// ✅ 内容配置：章节自动拆分（每章至少 1 张图，超出则拆成多张）
+const content = {
+  maxItemsPerSlide: 8,
+  maxLinesPerSlide: 12,
+  maxCharsPerSlide: 360,
+  cover: {
+    tag: "INSTALL GUIDE",
+    title: ["OpenClaw 安装教程", "从零到能跑"],
+    subtitle: "适用 Windows / macOS\n核心思路：Node + 全局安装 + 启动网关",
     metrics: [
-      { label: "COMPONENTS", value: "10类" },
-      { label: "PRINCIPLE", value: "内容驱动", highlight: true },
-      { label: "OUTPUT", value: "一套图" }
+      { label: "环境", value: "Node 18+" },
+      { label: "核心", value: "CLI + Gateway", highlight: true },
+      { label: "检查", value: "status / gateway" }
     ],
-    cta: "向左滑查看架构 →"
+    cta: "向左滑看步骤 →"
   },
-  {
-    type: "LIST",
-    tag: "LIST",
-    page: "02",
-    title: "List 组件：要点清单",
-    items: [
-      { icon: "✅", text: "适合：要点/清单/步骤概要" },
-      { icon: "✅", text: "信息特征：平级、短句" },
-      { icon: "✅", text: "视觉重点：对齐一致" }
-    ],
-    summary: { title: "使用场景：", text: "结论页 / 提示页" }
-  },
-  {
-    type: "POINTS",
-    tag: "POINTS",
-    page: "03",
-    title: "Points 组件：重点+总结",
-    items: [
-      { icon: "💡", text: "适合：观点拆解、要点解释" },
-      { icon: "🧭", text: "信息特征：要点 + 结论" },
-      { icon: "📌", text: "视觉重点：强调结论" }
-    ],
-    summary: {
-      label: "总结：",
-      highlight: "一句话结论",
-      desc: "把核心结论放到底部高亮，便于快速记忆。"
+  // chapters: 每个章节 = 一张图；如内容过多自动拆多张
+  chapters: [
+    {
+      tag: "SUMMARY",
+      title: "先说结论",
+      body: "OpenClaw 的核心是『Node 环境 + 全局安装 + 启动网关』，步骤不难，卡点主要在环境变量和权限。"
+    },
+    {
+      tag: "AUDIENCE",
+      title: "适合谁",
+      items: [
+        { icon: "✅", text: "想用 OpenClaw 做自动化/Agent 的人" },
+        { icon: "✅", text: "有基础命令行操作能力的人" },
+        { icon: "⚠️", text: "不太适合：完全没碰过命令行的人" }
+      ]
+    },
+    {
+      tag: "PREP",
+      title: "准备工作（3样）",
+      items: [
+        { icon: "✅", text: "Node.js（建议 18+）" },
+        { icon: "✅", text: "包管理器 pnpm（或 npm）" },
+        { icon: "✅", text: "一台能长期运行的电脑" }
+      ]
+    },
+    {
+      tag: "STEPS",
+      title: "安装步骤（通用流程）",
+      steps: [
+        "安装 Node.js",
+        "安装 pnpm：npm i -g pnpm",
+        "全局安装 OpenClaw：pnpm add -g openclaw",
+        "检查安装：openclaw --help",
+        "启动网关：openclaw gateway start",
+        "查看状态：openclaw gateway status"
+      ]
+    },
+    {
+      tag: "TIPS",
+      title: "常见卡点 & 小建议",
+      items: [
+        { icon: "🔧", text: "终端找不到 openclaw：重启终端或检查环境变量" },
+        { icon: "🔧", text: "端口占用：换端口或关闭占用程序" },
+        { icon: "🔧", text: "权限不足：用管理员权限重新执行安装" },
+        { icon: "✅", text: "先在本机跑通，再考虑接入自动化流程" },
+        { icon: "✅", text: "记录每一步日志，后面排障更省事" }
+      ]
     }
-  },
-  {
-    type: "STEPS",
-    tag: "STEPS",
-    page: "04",
-    title: "Steps 组件：流程步骤",
-    steps: [
-      "收集数据（曝光/收藏/转粉）",
-      "提炼结论（标题/封面/话题）",
-      "转为动作（下周优化清单）"
-    ],
-    summary: "适合：流程方法、SOP、操作步骤"
-  },
-  {
-    type: "TIMELINE",
-    tag: "TIMELINE",
-    page: "05",
-    title: "Timeline 组件：步骤引导",
-    timeline: [
-      {
-        num: "01",
-        title: "Slash Commands (快捷指令)",
-        desc: "将高频操作封装为快捷命令，省去每次重复写 Prompt：",
-        type: "list",
-        items: [
-          { highlight: "/create-ticket", text: "自动提取当前对话上下文，转为标准 Linear 升级工单" },
-          { highlight: "/search-issue", text: "在 Slack/Notion 中快速检索是否有相同的已知问题" }
-        ]
-      },
-      {
-        num: "02",
-        title: "Rules & Skills (沉淀规则)",
-        desc: "把资深工程师的「暗知识」变成 AI 的强制执行边界：",
-        type: "list",
-        items: [
-          {
-            highlight: "工单规范 Skill",
-            text: "强制检查输出中是否包含「复现步骤」、「预期行为」和「当前行为」"
-          },
-          {
-            highlight: "回复安全 Rule",
-            text: "严禁向客户暴露底层服务名称、内部员工姓名及未经脱敏的日志代码"
-          }
-        ]
-      },
-      {
-        num: "03",
-        title: "Sub-Agents (多代理并行)",
-        desc: "将排查任务拆分给多个子代理同时跑，结果合并后人工审核。",
-        type: "tags",
-        items: [
-          { icon: "🔎", label: "LogInvestigator" },
-          { icon: "🕒", label: "KnownIssueMiner" },
-          { icon: "🎫", label: "TicketWriter" },
-          { icon: "💬", label: "ReplyDrafter" }
-        ]
-      }
-    ]
-  },
-  {
-    type: "COMPARE",
-    tag: "COMPARE",
-    page: "06",
-    title: "Compare 组件：对比结构",
-    left: {
-      title: "BEFORE",
-      items: ["凭感觉复盘", "改动不可追溯", "结果不稳定"]
-    },
-    right: {
-      title: "AFTER",
-      items: ["有模板可复用", "改动可记录", "增长更可控"]
-    },
-    summary: "适合：前后对比、优劣对照"
-  },
-  {
-    type: "QUOTE",
-    tag: "QUOTE",
-    page: "07",
-    label: "INSIGHT",
-    quote: "复盘不是写总结，而是写出下一步。",
-    author: "运营复盘原则",
-    highlight: "重点：让“结论”变成“动作”"
-  },
-  {
-    type: "HOOK",
-    tag: "HOOK",
-    page: "08",
-    title: "Hook 组件：冲击观点",
-    highlightTitle: "一句话命中",
-    cards: [
-      { type: "light", label: "WHY", text: "没有结构，复盘永远停留在感受。" },
-      { type: "dark", label: "HOW", text: "有模板，复盘就能转成动作清单。" }
-    ],
-    cta: "想要模板？评论【复盘】领取"
-  },
-  {
-    type: "SIMPLE",
-    tag: "SIMPLE",
-    page: "09",
-    title: "Simple 组件：纯文本解释",
-    subtitle: "适合：概念释义、补充说明",
-    body: "用于补充背景/定义/边界条件。版式简洁，阅读负担低。"
-  },
-  {
-    type: "TERMINAL",
-    tag: "TERMINAL",
-    page: "10",
-    title: "Terminal 组件：命令演示",
-    subtitle: "把流程写成可复制的命令脚本，让协作更顺、交付更稳。",
-    lines: [
-      { type: "comment", text: "# 1. 拉取模板" },
-      { type: "command", prompt: ">", text: "/openclaw template pull xhs-review" },
-      { type: "comment", text: "# 2. 导出套图" },
-      { type: "command", prompt: ">", text: "/openclaw render --theme light" }
-    ],
-    note: {
-      prefix: "建议：把最常用的 3 条命令写进模板，",
-      highlight: "减少重复操作",
-      suffix: "，新人也能 1 分钟上手。"
+  ]
+};
+
+const chunkArray = (arr, size) => {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+};
+
+const splitText = (text, maxChars) => {
+  const parts = text
+    .split(/(?<=[。！？；.!?])\s*/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  const chunks = [];
+  let buf = "";
+  for (const p of parts) {
+    if ((buf + p).length > maxChars && buf) {
+      chunks.push(buf.trim());
+      buf = p;
+    } else {
+      buf += (buf ? "" : "") + p;
     }
   }
-];
+  if (buf) chunks.push(buf.trim());
+  // fallback hard split
+  return chunks.flatMap((c) => {
+    if (c.length <= maxChars) return [c];
+    const hard = [];
+    for (let i = 0; i < c.length; i += maxChars) hard.push(c.slice(i, i + maxChars));
+    return hard;
+  });
+};
+
+const inferType = (sec) => {
+  if (sec.type) return sec.type;
+  if (sec.lines) return "TERMINAL";
+  if (sec.steps) return "STEPS";
+  if (sec.items && sec.summary) return "POINTS";
+  if (sec.items) return "LIST";
+  if (sec.body) return "SIMPLE";
+  return "SIMPLE";
+};
+
+const splitChapter = (sec, cfg) => {
+  if (sec.items && sec.items.length > (cfg.maxItemsPerSlide || 5)) {
+    const chunks = chunkArray(sec.items, cfg.maxItemsPerSlide || 5);
+    return chunks.map((items) => ({ ...sec, items }));
+  }
+  if (sec.steps && sec.steps.length > (cfg.maxItemsPerSlide || 5)) {
+    const chunks = chunkArray(sec.steps, cfg.maxItemsPerSlide || 5);
+    return chunks.map((steps) => ({ ...sec, steps }));
+  }
+  if (sec.lines && sec.lines.length > (cfg.maxLinesPerSlide || 8)) {
+    const chunks = chunkArray(sec.lines, cfg.maxLinesPerSlide || 8);
+    return chunks.map((lines) => ({ ...sec, lines }));
+  }
+  if (sec.body && sec.body.length > (cfg.maxCharsPerSlide || 220)) {
+    const chunks = splitText(sec.body, cfg.maxCharsPerSlide || 220);
+    return chunks.map((body) => ({ ...sec, body }));
+  }
+  return [sec];
+};
+
+const parseChaptersFromRaw = (raw) => {
+  if (!raw) return [];
+  const lines = raw.split(/\r?\n/);
+  const chapters = [];
+  let cur = null;
+  const push = () => {
+    if (cur) {
+      cur.body = cur.body.trim();
+      chapters.push(cur);
+    }
+  };
+  for (const line of lines) {
+    if (/^#{2,3}\s+/.test(line)) {
+      push();
+      cur = { title: line.replace(/^#{2,3}\s+/, ""), body: "" };
+    } else {
+      if (!cur) cur = { title: "正文", body: "" };
+      cur.body += line + "\n";
+    }
+  }
+  push();
+  return chapters;
+};
+
+const buildSlides = (cfg) => {
+  const slides = [];
+  slides.push({ type: "COVER", ...cfg.cover });
+
+  const chapters = cfg.chapters?.length
+    ? cfg.chapters
+    : cfg.sections?.length
+      ? cfg.sections
+      : parseChaptersFromRaw(cfg.rawText);
+
+  let page = 2;
+  chapters
+    .flatMap((s) => splitChapter(s, cfg))
+    .forEach((sec, idx, arr) => {
+      const sameTitleCount = arr.filter((x) => x.title === sec.title).length;
+      const duplicate = sameTitleCount > 1;
+      const order = arr.filter((x) => x.title === sec.title).indexOf(sec) + 1;
+      const title = duplicate ? `${sec.title}（${order}/${sameTitleCount}）` : sec.title;
+
+      slides.push({
+        type: inferType(sec),
+        page: String(page).padStart(2, "0"),
+        ...sec,
+        title
+      });
+      page += 1;
+    });
+
+  return slides;
+};
+
+const slides = buildSlides(content);
 
 export const postDataLight = {
   theme: lightTheme,
-  slides: baseSlides
+  slides
 };
 
 export const postDataDark = {
   theme: darkTheme,
-  slides: baseSlides
+  slides
 };
 
 export const postData =
+  process.env.REMOTION_THEME === "dark" ? postDataDark : postDataLight;
+=
   process.env.REMOTION_THEME === "dark" ? postDataDark : postDataLight;

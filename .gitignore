@@ -1,4 +1,6 @@
 node_modules/
 assets/xhs-remotion-template/node_modules/
 assets/xhs-remotion-template/out/
+assets/xhs-remotion-template/out-dark/
+assets/xhs-remotion-template/out-run-*/
 .DS_Store

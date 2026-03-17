@@ -46,8 +46,10 @@ Create XHS-style static image sets with Remotion Still (React-based). This skill
 
 ## Output notes
 - Default size: **1080×1440 (3:4)**
+- Auto split thresholds (default): items=8, lines=12, body chars=360
 - Keep key text away from top/bottom edges (safe area ~120px top, ~180px bottom)
 
 ## Resources
 - `scripts/bootstrap_template.py` – copy template to a target directory
 - `assets/xhs-remotion-template/` – Remotion Still project template
+on Still project template

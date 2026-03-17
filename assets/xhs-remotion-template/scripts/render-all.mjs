@@ -7,9 +7,10 @@ import { postData } from "../data/post.js";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
 const themeMode = process.env.REMOTION_THEME === "dark" ? "dark" : "light";
-const outDir = path.resolve(projectRoot, themeMode === "dark" ? "out-dark" : "out");
+const outDirName = process.env.REMOTION_OUT_DIR || (themeMode === "dark" ? "out-dark" : "out");
+const outDir = path.resolve(projectRoot, outDirName);
 
-if (!existsSync(outDir)) mkdirSync(outDir);
+if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
 
 postData.slides.forEach((_, i) => {
   const id = `Slide-${i + 1}`;
