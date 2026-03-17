@@ -1,5 +1,5 @@
 ---
-name: xhs-remotion-still
+name: xhs-remotion-skill
 description: Generate Xiaohongshu (小红书) static image carousels using Remotion Still. Use when asked to create/convert text into XHS 图文套图/封面/内页 PNG, batch export Remotion stills, or set up a Remotion still workflow/template for XHS content.
 ---
 
